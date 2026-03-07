@@ -1,0 +1,31 @@
+# Dependencias
+/vendor/
+/www/laravel/vendor/
+
+# Configuración local
+.env
+.env.*
+!.env.example
+
+# Logs
+/www/laravel/storage/logs/*.log
+/www/laravel/storage/framework/cache/
+/www/laravel/storage/framework/sessions/
+/www/laravel/storage/framework/views/
+
+# Cache
+/www/laravel/bootstrap/cache/*.php
+!/www/laravel/bootstrap/cache/.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker
+docker-compose.override.yml
