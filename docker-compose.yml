@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    container_name: servidor_web
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+
+  db:
+    image: mysql:8.0
+    container_name: base_datos
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mi_proyecto
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: admin_bd
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+
+  composer:
+    image: composer:latest
+    container_name: composer
+    volumes:
+      - ./www:/app
+    command: ["composer", "create-project", "laravel/laravel:^10.0", "laravel"]
+    depends_on:
+      - web
